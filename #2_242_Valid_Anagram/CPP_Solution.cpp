@@ -1,5 +1,6 @@
 #include <unordered_map>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -24,6 +25,15 @@ public:
 
 
 int main(){
+    Solution sol;
+    std::string s = "listen";
+    std::string t = "silent";
+
+    if (sol.isAnagram(s, t)) {
+        std::cout << "The strings are anagrams." << std::endl;
+    } else {
+        std::cout << "The strings are not anagrams." << std::endl;
+    }
 
     return 0;
 }
