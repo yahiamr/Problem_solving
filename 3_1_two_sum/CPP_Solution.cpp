@@ -1,7 +1,8 @@
+#define CATCH_CONFIG_MAIN 
 #include <vector>
 #include <unordered_map>
 using namespace std;
-
+#include "catch.hpp"
 
 class Solution {
 public:
@@ -33,8 +34,28 @@ for (auto x : lst_map)
 };
 
 
-int main(){
-   
+// Test cases
+TEST_CASE("Two Sum Problem") {
+    Solution solution;
 
-    return 0;
+    SECTION("Test Case 1") {
+        vector<int> nums = {2, 7, 11, 15};
+        int target = 9;
+        vector<int> expected = {0, 1};
+        REQUIRE(solution.twoSum(nums, target) == expected);
+    }
+
+    SECTION("Test Case 2") {
+        vector<int> nums = {3, 2, 4};
+        int target = 6;
+        vector<int> expected = {1, 2};
+        REQUIRE(solution.twoSum(nums, target) == expected);
+    }
+
+    SECTION("Test Case 3") {
+        vector<int> nums = {3, 3};
+        int target = 6;
+        vector<int> expected = {1, 0};
+        REQUIRE(solution.twoSum(nums, target) == expected);
+    }
 }
