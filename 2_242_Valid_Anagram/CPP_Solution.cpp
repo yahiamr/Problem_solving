@@ -1,7 +1,8 @@
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include <unordered_map>
 #include <string>
 #include <iostream>
-
+#include "catch.hpp"
 using namespace std;
 
 
@@ -23,17 +24,20 @@ public:
     }
 };
 
-
-int main(){
+TEST_CASE("Anagram Detection") {
     Solution sol;
-    std::string s = "listen";
-    std::string t = "silent";
 
-    if (sol.isAnagram(s, t)) {
-        std::cout << "The strings are anagrams." << std::endl;
-    } else {
-        std::cout << "The strings are not anagrams." << std::endl;
+    SECTION("Anagrams") {
+        REQUIRE(sol.isAnagram("listen", "silent") == true);
+        REQUIRE(sol.isAnagram("triangle", "integral") == true);
     }
 
-    return 0;
+    SECTION("Not Anagrams") {
+        REQUIRE(sol.isAnagram("hello", "world") == false);
+        REQUIRE(sol.isAnagram("apple", "orange") == false);
+    }
+
+    SECTION("Different Lengths") {
+        REQUIRE(sol.isAnagram("abc", "abcd") == false);
+    }
 }
